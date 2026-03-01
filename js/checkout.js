@@ -105,7 +105,7 @@ const clearBtn = document.getElementById("clearCart");
 
 
 // ======================
-// SCROLL PARA CHECKOUT — FIX REAL MOBILE
+// SCROLL PARA CHECKOUT — FIX REAL MOBILE (BIND CORRETO)
 // ======================
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -114,46 +114,43 @@ document.addEventListener("DOMContentLoaded", () => {
   miniCount  = document.getElementById('miniCount');
   mobileBtn  = document.getElementById('mobileBtn');
 
-
- // ✅ estado inicial: começa escondido até ter itens
+  // ✅ estado inicial: começa escondido até ter itens
   if (miniCart)  miniCart.style.display = "none";
   if (mobileBtn) mobileBtn.style.display = "none";
-
 
   const checkoutEl = document.getElementById('checkout');
   const miniScroll = document.getElementById('miniScroll');
 
- function scrollToCheckout(){
-  if(!checkoutEl) return;
+  function scrollToCheckout(){
+    if(!checkoutEl) return;
 
-  const offset = 45;
+    const offset = 45;
 
-  // 1) jeito mais compatível
-  checkoutEl.scrollIntoView({ behavior: "smooth", block: "start" });
+    checkoutEl.scrollIntoView({ behavior: "smooth", block: "start" });
 
-  // 2) corrige o topo depois (pra não ficar colado no header/ticker)
-  setTimeout(() => {
-    window.scrollBy({ top: -offset, left: 0, behavior: "smooth" });
-  }, 250);
-}
+    setTimeout(() => {
+      window.scrollBy({ top: -offset, left: 0, behavior: "smooth" });
+    }, 250);
+  }
 
   /* ======================
-   SCROLL — BOTÕES VER PEDIDO (VERSÃO LIMPA E SEGURA)
-====================== */
-function bindScrollButton(btn){
-  if(!btn) return;
+     SCROLL — BOTÕES VER PEDIDO (VERSÃO LIMPA E SEGURA)
+  ====================== */
+  function bindScrollButton(btn){
+    if(!btn) return;
 
-  btn.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    scrollToCheckout();
-  });
-}
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      scrollToCheckout();
+    });
+  }
 
-bindScrollButton(miniScroll);
-bindScrollButton(mobileBtn);
+  bindScrollButton(miniScroll);
+  bindScrollButton(mobileBtn);
 
-}); // ✅ FECHA O DOMContentLoaded (scroll)
+});
+
 // ======================
 // ESTADO INICIAL FORÇADO (ANTI-BUG)
 // ======================
@@ -165,8 +162,6 @@ if (changeValue) {
   changeValue.classList.add('sc-hidden');
   changeValue.value = '';
 }
-
-
 
 
 const couponBlock  = document.getElementById('couponBlock');
@@ -870,6 +865,7 @@ if (clearBtn) {
     updateUI();
   });
 }
+
 
 
 
