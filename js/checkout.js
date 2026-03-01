@@ -867,6 +867,55 @@ if (clearBtn) {
 }
 
 
+/* =========================================
+   DEBUG MOBILE — QUEM ESTÁ POR CIMA?
+   (remover depois)
+========================================= */
+(function debugTopLayerTap(){
+  // evita duplicar
+  if (window.__debugTopLayerTap) return;
+  window.__debugTopLayerTap = true;
+
+  function show(msg){
+    let el = document.getElementById("tap-debug");
+    if(!el){
+      el = document.createElement("div");
+      el.id = "tap-debug";
+      el.style.position = "fixed";
+      el.style.left = "10px";
+      el.style.right = "10px";
+      el.style.bottom = "90px";
+      el.style.zIndex = "999999";
+      el.style.background = "rgba(0,0,0,.85)";
+      el.style.color = "#fff";
+      el.style.padding = "10px";
+      el.style.borderRadius = "12px";
+      el.style.fontSize = "12px";
+      el.style.lineHeight = "1.3";
+      el.style.pointerEvents = "none"; // não bloqueia nada
+      document.body.appendChild(el);
+    }
+    el.textContent = msg;
+    clearTimeout(window.__tapDebugT);
+    window.__tapDebugT = setTimeout(()=> el.remove(), 1800);
+  }
+
+  document.addEventListener("pointerdown", (e) => {
+    const x = e.clientX, y = e.clientY;
+    const top = document.elementFromPoint(x, y);
+
+    if(!top) return;
+
+    const id = top.id ? `#${top.id}` : "";
+    const cls = top.className ? `.${String(top.className).trim().replace(/\s+/g,'.')}` : "";
+    const tag = top.tagName?.toLowerCase();
+
+    show(`TOPO: ${tag}${id}${cls}`);
+  }, { passive: true });
+})();
+
+
+
 
 
 
