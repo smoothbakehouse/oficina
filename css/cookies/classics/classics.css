@@ -812,4 +812,26 @@
   .card-media{
     width: 320px;
   }
+
+}
+
+
+
+
+/* ==================================================
+   ✅ FIX CLIQUE — LIGHTBOX NÃO BLOQUEIA BOTÕES (QUANDO FECHADO)
+   Motivo:
+   - .lightbox é um overlay (position: fixed; inset:0; z-index alto)
+   - Em alguns celulares/webviews, mesmo com visibility/opacity, ele pode “capturar” toque
+   Solução:
+   - pointer-events: none quando fechado
+   - pointer-events: auto quando .active
+   ================================================== */
+
+.lightbox{
+  pointer-events: none;
+}
+
+.lightbox.active{
+  pointer-events: auto;
 }
