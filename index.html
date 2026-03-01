@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+e<!DOCTYPE html>
 <html lang="pt-BR" data-theme="rose">
 <head>
 
@@ -67,6 +67,72 @@
 
 	
 </head>
+
+
+
+
+<script>
+/* =========================================
+   DEBUG HTML — NÃO DEPENDE DO checkout.js
+   (remover depois)
+========================================= */
+(function(){
+  const badge = document.createElement("div");
+  badge.textContent = "DEBUG HTML ✅";
+  badge.style.position = "fixed";
+  badge.style.left = "10px";
+  badge.style.top = "10px";
+  badge.style.zIndex = "2147483647";
+  badge.style.background = "rgba(0,0,0,.85)";
+  badge.style.color = "#fff";
+  badge.style.padding = "8px 10px";
+  badge.style.borderRadius = "10px";
+  badge.style.fontSize = "12px";
+  badge.style.pointerEvents = "none";
+  document.body.appendChild(badge);
+
+  function show(msg){
+    let el = document.getElementById("dbg-top");
+    if(!el){
+      el = document.createElement("div");
+      el.id = "dbg-top";
+      el.style.position = "fixed";
+      el.style.left = "10px";
+      el.style.right = "10px";
+      el.style.bottom = "90px";
+      el.style.zIndex = "2147483647";
+      el.style.background = "rgba(0,0,0,.85)";
+      el.style.color = "#fff";
+      el.style.padding = "10px";
+      el.style.borderRadius = "12px";
+      el.style.fontSize = "12px";
+      el.style.pointerEvents = "none";
+      document.body.appendChild(el);
+    }
+    el.textContent = msg;
+    clearTimeout(window.__dbgT);
+    window.__dbgT = setTimeout(()=> el.remove(), 1800);
+  }
+
+  function pickTop(e){
+    const t = (e.touches && e.touches[0]) ? e.touches[0] : null;
+    const x = t ? t.clientX : e.clientX;
+    const y = t ? t.clientY : e.clientY;
+    const top = document.elementFromPoint(x, y);
+    if(!top) return;
+    const tag = top.tagName ? top.tagName.toLowerCase() : "??";
+    const id  = top.id ? `#${top.id}` : "";
+    const cls = top.className ? `.${String(top.className).trim().replace(/\s+/g,'.')}` : "";
+    show(`TOPO: ${tag}${id}${cls}`);
+  }
+
+  window.addEventListener("touchstart", pickTop, {capture:true, passive:true});
+  window.addEventListener("pointerdown", pickTop, {capture:true, passive:true});
+})();
+</scriptminiScrolliniScroll
+
+
+	
 
 <body>  <!-- versão sem padrão elipse -->
 
@@ -1186,5 +1252,6 @@ window.addEventListener("load", () => {
 
 </body>
 </html>
+
 
 
