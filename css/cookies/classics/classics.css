@@ -1,0 +1,815 @@
+/* ==================================================
+   COOKIES — SISTEMA LIMPO E ORGANIZADO
+   Estrutura:
+   1. Seção
+   2. Container
+   3. Grid
+   4. Card
+   5. Imagem
+   6. Conteúdo
+   7. Tipografia
+   8. Footer
+   9. Preço
+   10. Controles
+   11. Lightbox
+   12. Responsivo
+   ================================================== */
+
+
+/* ==================================================
+   1. SEÇÃO
+   ================================================== */
+
+.section.cookies {
+  /*background: #f8d7cf;*/
+  padding-block: 3rem;
+}
+
+.section-title {
+  color: var(--brown);
+}
+
+.category-title {
+  color: var(--brown);
+}
+
+/* ==================================================
+   3. GRID
+   ================================================== */
+
+.cookie-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-top: 1.6rem;
+}
+
+
+
+/* ==================================================
+   4. CARD
+   ================================================== */
+
+.cookie-card {
+  width: 100%;
+  max-width: 760px;
+  margin-inline: auto;
+
+  background: #F7EFE6;
+    /*border: 2px solid rgba(102,64,61,.10);*/
+
+
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  padding: 0.8rem 1.4rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+
+.cookie-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 22px rgba(0,0,0,.12);
+}
+
+
+/* ==================================================
+   5. IMAGEM
+   ================================================== */
+
+.cookie-card > img{
+  width: 240px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-block: .6rem;
+
+  display: block;      /* 🔥 impede espaço inline */
+  flex: 0 0 auto;      /* 🔥 impede encolher no flex row */
+
+  transition: border-radius .3s ease;
+}
+
+/* ==================================================
+   6. CONTEÚDO
+   ================================================== */
+
+.cookie-info {
+  width: 100%;
+  max-width: 520px;
+  margin-inline: auto;
+}
+
+
+/* ==================================================
+   7. TIPOGRAFIA
+   ================================================== */
+
+.cookie-card h4 {
+  font-family: 'Agency';
+
+  /* ORIGINAL */
+  /* font-size: clamp(2.7rem, 7vw, 3.2rem); primeiro */
+
+  /* 🔽 10% MENOR */
+  /* font-size: clamp(2.4rem, 6.3vw, 2.9rem); */
+
+  /* 🔽 15% MENOR */
+   /*font-size: clamp(2.3rem, 6vw, 2.7rem);*/
+
+  /* 🔽 20% MENOR */
+  /*font-size: clamp(2.1rem, 5.6vw, 2.5rem);*/
+
+ /* 🔽 Personalizado */
+   font-size: clamp(2.5rem, 6.3vw, 3.0rem);
+
+  color: var(--brown);
+  margin-bottom: 0.5rem;
+}
+
+.subinfo {
+  font-size: 0.9rem;
+  color: var(--rose);
+  margin-bottom: 1rem;
+  font-family: "Roboto";
+}
+
+.cookie-card p:not(.subinfo) {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--brown);
+  margin-bottom: 1.5rem;
+}
+
+
+/* ==================================================
+   8. FOOTER
+   ================================================== */
+
+.cookie-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+
+/* ==================================================
+   9. PREÇO
+   ================================================== */
+
+.price-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.cookie-price-pill {
+  background: var(--rose);
+  padding: 0.5rem 1.5rem;
+  border-radius: 14px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: transform 0.2s ease;
+}
+
+.cookie-price-pill .price-line {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 1.3rem;
+}
+
+/* força cor correta do preço */
+.cookie-price-pill .price-line,
+.cookie-price-pill .price-line * {
+  color: #F7EFE6;
+}
+
+.currency { font-size: 0.75em; }
+.cents { font-size: 0.7em; }
+
+.price-block .info-produto {
+  font-size: 0.75rem;
+  opacity: 0.85;
+  color: var(--brown);
+}
+
+
+/* ==================================================
+   10. CONTROLES
+   ================================================== */
+
+.qty-control {
+  display: flex;
+  align-items: center;
+  /*---------------Espaço entre elipses--------------*/
+  gap: 0.3rem;
+}
+
+.qty-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.qty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  transition: transform 0.15s ease;
+  transform: translateY(-10px) scale(1);
+  transform-origin: center;
+}
+
+.qty-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: var(--rose);
+  color: #F7EFE6;
+  font-size: 1.25rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.12s ease,
+    box-shadow 0.12s ease;
+
+  /*box-shadow: 0 4px 10px rgba(0,0,0,.15);*/
+}
+
+/* HOVER */
+.qty-btn:hover {
+  background: var(--brown);
+  transform: translateY(-1px);
+}
+
+/* PRESSÃO */
+.qty-btn:active {
+  transform: translateY(1px) scale(.95);
+  /*box-shadow: 0 2px 6px rgba(0,0,0,.12);*/
+}
+
+.qty-control:has(.qty-btn:active) .qty {
+  transform: translateY(-10px) scale(1.2);
+}
+
+.info-produto {
+  font-size: 0.75rem;
+  color: var(--brown);
+  opacity: 0.8;
+}
+
+
+/* ==================================================
+   11. LIGHTBOX
+   ================================================== */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  /*background: rgba(27, 12, 12, 0.75);*/
+  background: rgba(74, 46, 42, .75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease;
+  z-index: 9999;
+}
+
+.lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ==================================================
+   LIGHTBOX — SETAS (IGUAL CARROSSEL)
+   ================================================== */
+
+.lightbox-nav{
+  position:absolute;
+  top:50%;
+  transform: translateY(-50%);
+
+  width:44px;
+  height:44px;
+
+  background: none !important;         /* sem fundo */
+  border: none !important;             /* sem borda */
+  box-shadow: none !important;         /* sem sombra */
+  border-radius: 0 !important;         /* sem elipse */
+
+  padding: 0 !important;
+  line-height: 1;
+  appearance: none;
+  -webkit-appearance: none;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:40px;
+  color: var(--brown) !important;
+
+  cursor:pointer;
+  opacity:.9;
+  transition: opacity .10s ease, transform .09s ease;
+
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.lightbox-prev{ left:10px; }
+.lightbox-next{ right:10px; }
+
+.lightbox-nav:hover{
+  opacity:1;
+  transform: translateY(-50%) scale(1.05);
+}
+
+/* PRESS FORTE (PULA/DESCE) — igual carrossel */
+.lightbox-nav:active{
+  transform: translateY(calc(-50% + 10px)) scale(.90);
+  opacity: 1;
+}
+
+/* press garantido via JS (.is-press) */
+.lightbox-nav.is-press{
+  transform: translateY(calc(-50% + 10px)) scale(.90) !important;
+  opacity: 1 !important;
+}
+
+/* teclado (TAB/ENTER) */
+.lightbox-nav:focus-visible{
+  outline: none;
+  transform: translateY(-50%) scale(1.05);
+  opacity: 1;
+}
+
+/* =========================
+   LIGHTBOX — DOTS (INSTAGRAM-LIKE)
+   ========================= */
+.lightbox-dots{
+  position: absolute;
+  left: 50%;
+  bottom: 20px;   /* controla altura */
+  transform: translateX(-50%);
+
+  display: flex;
+  gap: 6px;
+}
+
+/* bolinhas */
+.lightbox-dot{
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  background: #F7EFE6; /* Bege */
+  opacity: .95;
+  transition: transform .12s ease, opacity .12s ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* ativa */
+.lightbox-dot.is-active{
+  background: var(--brown); /* marrom */
+  transform: scale(1.25);
+  opacity: 1;
+}
+
+/* Mobile/touch: não deixa hover “grudar” */
+@media (hover: none){
+  .lightbox-nav:hover{
+    transform: translateY(-50%);
+    opacity: .9;
+  }
+}
+
+/* ==================================================
+   CONTAINER DA IMAGEM (REFERÊNCIA DO BOTÃO)
+   ================================================== */
+
+.lightbox-content{
+  position: relative;
+  display: inline-block;
+  transition: transform .28s ease;
+  will-change: transform;
+}
+
+/* IMAGEM */
+.lightbox img{
+  display:block;
+  max-width:90vw;
+  max-height:90vh;
+  border-radius:16px;
+  object-fit: contain;
+  background:#F7EFE6;
+
+  /* 🔥 transição no lightbox */
+  transition: transform .28s ease;
+}
+
+/* ==================================================
+   BOTÃO X SOBRE A IMAGEM
+   ================================================== */
+
+.lightbox-close{
+  position:absolute;
+  top:8px;
+  right:8px;
+
+  width:36px;
+  height:36px;
+
+  border-radius:50%;
+  border:none;
+
+  background: rgba(74, 46, 42, .55); /* Marrom Smooth com transparência */
+  color: #F7EFE6;              /* X Bege */
+
+  font-size:20px;
+  cursor:pointer;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  z-index:2;
+}
+
+.lightbox-close:hover{
+  background: rgba(74, 46, 42, .75);
+  transform: scale(1.05);
+}
+
+
+/* ==================================================
+   12. RESPONSIVO
+   ================================================== */
+
+@media (min-width: 768px) {
+
+  .cookie-card {
+    flex-direction: row;
+    gap: 2.2rem;
+    align-items: center;
+    text-align: left;
+  }
+
+  .cookie-card > img{
+    width: clamp(240px, 32vw, 300px);
+    height: 280px;
+    border-radius: 18px; /* formato quadrado elegante */
+  }
+
+  .cookie-info { max-width: 420px; }
+
+  .cookie-footer { justify-content: flex-start; }
+
+}
+/*-----------controla somente titulo 320 mobile-----------*/
+@media (max-width:360px){
+  .cookie-card h4{
+    font-size: 2.1rem;
+  }
+}
+
+/*-------------Clássicos-------------*/
+.category-title {
+  text-align: center;
+}
+
+.category-title{
+  margin-top: -0.8rem;
+}
+
+/* ==================================================
+   MOBILE — espaço entre título e subinfo
+   ================================================== */
+/*
+@media (max-width: 768px){
+  .cookie-card h4{
+    margin-bottom: 1.2rem;
+  }
+}
+*/
+
+
+/* ==================================================
+   MOBILE — espaço entre imagem e texto
+   ================================================== */
+@media (max-width:768px){
+
+  .cookie-card > img{
+    margin-bottom: 1rem; /* aumenta só abaixo */
+  }
+
+}
+
+/* ==================================================
+   MOBILE MÉDIO — aumentar imagem sem afetar desktop
+   ================================================== */
+
+@media (min-width: 361px) and (max-width: 767px){
+
+  .cookie-card > img{
+    width: 320px;
+  }
+
+}
+
+
+/* Card novo 50/120g SELETOR DE PESO INLINE */
+/* =====================================
+   RADIO DE PESO — AJUSTE FINAL
+===================================== */
+
+.cookie-card .weight-row label{
+  flex-direction: row-reverse !important;
+  align-items: center;
+  gap: 4px;              /* 🔥 diminui espaço */
+}
+
+.cookie-card .weight-row input[type="radio"]{
+  margin-top: 0 !important;
+}
+
+/* =====================================
+   POSICIONAMENTO DO SELETOR DE PESO
+===================================== */
+
+.cookie-card .weight-row{
+  justify-content: flex-start !important; /* puxa pra esquerda */
+  margin-top: -0.4rem;                    /* puxa pra cima */
+  margin-bottom: 1.3rem;                  /* afasta dos botões */
+  margin-left: 80px;                      /* ajuste fino horizontal */
+  gap: 40px;                              /* distância entre 120g e 60g */
+}
+
+/* =====================================
+   RADIO DE PESO — TAMANHO MENOR NO CARD
+===================================== */
+
+.cookie-card .weight-row input[type="radio"]{
+  width: 20px;
+  height: 20px;
+}
+
+.cookie-card .weight-row input[type="radio"]::after{
+  width: 10px;
+  height: 10px;
+}
+
+/* MOBILE — centraliza seleção de peso */
+@media (max-width:768px){
+
+  .cookie-card .weight-row{
+    justify-content: center !important;
+    margin-left: 0;
+  }
+
+.cookie-card .weight-row input[type="radio"]{
+  width: 24px;
+  height: 24px;
+}
+
+.cookie-card .weight-row input[type="radio"]::after{
+  width: 12px;
+  height: 12px;
+}
+
+
+.cookie-card .weight-row{
+  margin-top: 1.5rem;  /* puxa pra cima pra perto da descrição */
+  margin-bottom: 2rem;                  /* afasta dos botões */
+}
+
+}
+/* =====================================
+   RADIO — FUNDO BRANCO REAL (CARD)
+   IMPORTANTE: sobrescreve estilo custom
+===================================== */
+
+.cookie-card .weight-row input[type="radio"]{
+  background: #fff !important;
+}
+
+.cookie-card .weight-row input[type="radio"]::before{
+  background: #fff !important;
+}
+
+
+/* ==================================================
+   CARROSSEL — (Instagram-like) TAMANHO IGUAL À IMAGEM ORIGINAL
+   ================================================== */
+
+.card-media{
+  position: relative;
+  overflow: hidden;
+
+  width: 240px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  margin-block: .6rem;
+
+  flex: 0 0 auto;
+}
+
+/* trilho que desliza */
+.carousel-track{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transform: translateX(0);
+  transition: transform .28s ease;
+  touch-action: pan-y;
+}
+
+/* cada imagem ocupa 100% do “quadro” */
+.carousel-img{
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  margin: 0 !important;        /* 🔥 importante: mata margens herdadas */
+  border-radius: 0 !important; /* 🔥 radius fica no container */
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* setas (desktop) */
+/* ==================================================
+   CARROSSEL — SETAS ROSA (SEM FUNDO)
+   ================================================== */
+
+.carousel-btn{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 38px;
+  height: 38px;
+
+  line-height: 1;                       /* ✅ evita “caixa estranha” */
+  appearance: none;
+  -webkit-appearance: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 28px;
+  color: var(--brown) !important;        /* ✅ só a setinha marron */
+
+  cursor: pointer;
+  opacity: .9;
+  transition: opacity .10s ease, transform .09s ease;
+  /* iOS/Android: melhora resposta ao toque */
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  background: none;
+
+ border: none;
+ box-shadow: none;
+ border-radius: 0;
+ padding: 0;
+}
+
+.carousel-btn.prev{ left: 10px; }
+.carousel-btn.next{ right: 10px; }
+
+.carousel-btn:hover{
+  opacity: 1;
+  transform: translateY(-50%) scale(1.05);
+}
+
+/* Mobile/touch: não mantém hover preso */
+@media (hover: none){
+  .carousel-btn:hover{
+    transform: translateY(-50%);
+    opacity: .9;
+  }
+}
+
+/* =========================
+   CARROSSEL — PRESS FORTE (PULA/DESCE)
+   ========================= */
+
+/* clique/toque */
+.carousel-btn:active{
+  transform: translateY(calc(-50% + 10px)) scale(.90);
+  opacity: 1;
+}
+
+/* press garantido via JS (classe temporária) */
+.carousel-btn.is-press{
+  transform: translateY(calc(-50% + 10px)) scale(.90) !important;
+  opacity: 1 !important;
+}
+
+/* teclado (TAB/ENTER) */
+/*.carousel-btn:focus-visible{
+  outline: none;
+  transform: translateY(-50%) scale(1.05);
+  opacity: 1;
+}*/
+
+/* =========================
+   CARROSSEL — DOTS (INSTAGRAM-LIKE)
+   ========================= */
+.carousel-dots{
+  position: absolute;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+
+  display: flex;
+  gap: 6px; /*espaço etre bolihas iferior*/
+
+  /* sem “capsula” chamando atenção */
+  padding: 0;
+  background: none;
+  border-radius: 0;
+}
+
+/* bolinhas */
+.carousel-dot{
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+
+  background: #F7EFE6;   /* BEGE Smooth */
+  opacity: .95;
+
+  transition: transform .12s ease, opacity .12s ease;
+}
+
+/* bolinha ativa */
+.carousel-dot.is-active{
+  background: var(--brown); /* MARROM Smooth */
+  transform: scale(1.25);
+  opacity: 1;
+}
+
+/* acessibilidade */
+.carousel-dot:focus-visible{
+  outline: none;
+  transform: scale(1.35);
+}
+
+
+/* Desktop: igual ao seu .cookie-card img no desktop */
+@media (min-width: 768px){
+  .card-media{
+    width: clamp(240px, 32vw, 300px);
+    height: 280px;
+    border-radius: 18px; /* quadrado elegante */
+    margin-block: .6rem;
+  }
+}
+
+/* Mobile: igual ao seu margin-bottom */
+@media (max-width:768px){
+  .card-media{
+    margin-bottom: 1rem;
+    border-radius: 999px; /* mantém redondo */
+  }
+}
+
+/* Mobile médio: igual ao seu aumento para 320px */
+@media (min-width: 361px) and (max-width: 767px){
+  .card-media{
+    width: 320px;
+  }
+}

@@ -1,0 +1,63 @@
+.hero-title .big {
+  font-size: clamp(3.6rem, 7vw, 5.2rem); /* maior */
+  font-weight: 900;
+}
+
+.hero-title .mid {
+  font-size: clamp(2.6rem, 6vw, 4rem);   /* maior */
+  margin-left: 4px;
+}
+
+.hero-title .script {
+  font-family: 'Regular';
+  font-size: clamp(3.6rem, 7vw, 5.4rem); /* maior */
+  margin-left: 2px;
+}
+
+
+-------------------------------------
+
+
+/* ------------------------- TÍTULO HERO ------------------------- */
+.hero-title {
+  display: flex;
+  flex-direction: column;
+  gap: 1.55rem;           /* mais distância entre as palavras */
+  margin-bottom: -15rem;    /* desce todo o bloco */
+  line-height: 1;
+}
+.hero-title .big {
+  font-size: clamp(2.32rem, 4vw, 3.28rem); /* -20% */
+  font-weight: 800;
+}
+
+.hero-title .mid {
+  font-size: clamp(1.72rem, 3.2vw, 2.4rem); /* -20% */
+  margin-left: 4px;
+}
+
+.hero-title .script {
+  font-family: "Regular";
+  font-size: clamp(3.353rem, 5.832vw, 4.666rem); /* -10% */
+  margin-left: 2px;
+}                       -------------------------------------------
+
+
+
+
+html botão fazer pedido---------
+
+<div class="hero-title">
+          <span class="big">Cookies</span>
+          <span class="mid"></span>
+          <span class="script">Artesanais
+        </div>
+
+        /*<a href="#pedido" class="cta-button">Fazer pedido agora</a>
+      </div>*/
+
+      <img src="img/profile.png" alt="Foto de perfil" class="profile-img">
+    </div>
+  </section>
+
+----------------------------------------------------------------------------------
