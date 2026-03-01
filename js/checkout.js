@@ -146,8 +146,13 @@ miniScroll?.addEventListener('click', (e) => {
   scrollToCheckout();
 });
 
+/* ======================
+   DEBUG — TESTE DE CLIQUE NO BOTÃO MOBILE
+   (pode remover depois)
+====================== */
 mobileBtn?.addEventListener('click', (e) => {
   e.preventDefault();      // impede clique “fantasma”
+  console.log("✅ CLICOU NO BOTÃO VER PEDIDO (MOBILE)");
   scrollToCheckout();
 });
 
@@ -869,3 +874,4 @@ if (clearBtn) {
     updateUI();
   });
 }
+
