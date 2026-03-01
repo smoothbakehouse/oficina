@@ -868,13 +868,29 @@ if (clearBtn) {
 
 
 /* =========================================
-   DEBUG MOBILE — QUEM ESTÁ POR CIMA?
+   DEBUG MOBILE — CONFIRMA EXECUÇÃO + CAPTURE
    (remover depois)
 ========================================= */
-(function debugTopLayerTap(){
+(() => {
   // evita duplicar
-  if (window.__debugTopLayerTap) return;
-  window.__debugTopLayerTap = true;
+  if (window.__dbgTap) return;
+  window.__dbgTap = true;
+
+  // plaquinha fixa (prova que o arquivo executou)
+  const badge = document.createElement("div");
+  badge.id = "dbg-badge";
+  badge.textContent = "DEBUG ATIVO ✅ (toque na tela)";
+  badge.style.position = "fixed";
+  badge.style.left = "10px";
+  badge.style.top = "10px";
+  badge.style.zIndex = "999999";
+  badge.style.background = "rgba(0,0,0,.85)";
+  badge.style.color = "#fff";
+  badge.style.padding = "8px 10px";
+  badge.style.borderRadius = "10px";
+  badge.style.fontSize = "12px";
+  badge.style.pointerEvents = "none"; // não bloqueia toque
+  document.addEventListener("DOMContentLoaded", () => document.body.appendChild(badge));
 
   function show(msg){
     let el = document.getElementById("tap-debug");
@@ -892,7 +908,7 @@ if (clearBtn) {
       el.style.borderRadius = "12px";
       el.style.fontSize = "12px";
       el.style.lineHeight = "1.3";
-      el.style.pointerEvents = "none"; // não bloqueia nada
+      el.style.pointerEvents = "none";
       document.body.appendChild(el);
     }
     el.textContent = msg;
@@ -900,23 +916,19 @@ if (clearBtn) {
     window.__tapDebugT = setTimeout(()=> el.remove(), 1800);
   }
 
-  document.addEventListener("pointerdown", (e) => {
-    const x = e.clientX, y = e.clientY;
+  function pickTop(e){
+    const x = (e.touches && e.touches[0]) ? e.touches[0].clientX : e.clientX;
+    const y = (e.touches && e.touches[0]) ? e.touches[0].clientY : e.clientY;
     const top = document.elementFromPoint(x, y);
-
     if(!top) return;
 
-    const id = top.id ? `#${top.id}` : "";
+    const tag = top.tagName ? top.tagName.toLowerCase() : "??";
+    const id  = top.id ? `#${top.id}` : "";
     const cls = top.className ? `.${String(top.className).trim().replace(/\s+/g,'.')}` : "";
-    const tag = top.tagName?.toLowerCase();
-
     show(`TOPO: ${tag}${id}${cls}`);
-  }, { passive: true });
+  }
+
+  // CAPTURE: pega mesmo se algum script parar a propagação
+  window.addEventListener("touchstart", pickTop, { capture: true, passive: true });
+  window.addEventListener("pointerdown", pickTop, { capture: true, passive: true });
 })();
-
-
-
-
-
-
-
