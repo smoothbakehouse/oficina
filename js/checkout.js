@@ -137,30 +137,23 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 250);
 }
 
- // ======================
-// FIX — PREVINE CLIQUE FANTASMA
-// ======================
-
-miniScroll?.addEventListener('click', (e) => {
-  e.preventDefault();      // impede evento invisível
-  scrollToCheckout();
-});
-
-/* ======================
-   FIX — PREVINE CLIQUE FANTASMA
+  /* ======================
+   SCROLL — BOTÕES VER PEDIDO (VERSÃO LIMPA E SEGURA)
 ====================== */
+function bindScrollButton(btn){
+  if(!btn) return;
 
-miniScroll?.addEventListener('click', (e) => {
-  e.preventDefault();      // impede evento invisível
-  scrollToCheckout();
-});
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    scrollToCheckout();
+  });
+}
 
-mobileBtn?.addEventListener('click', (e) => {
-  e.preventDefault();      // impede clique “fantasma”
-  scrollToCheckout();
-});
+bindScrollButton(miniScroll);
+bindScrollButton(mobileBtn);
 
-});
+}); // ✅ FECHA O DOMContentLoaded (scroll)
 // ======================
 // ESTADO INICIAL FORÇADO (ANTI-BUG)
 // ======================
@@ -877,6 +870,7 @@ if (clearBtn) {
     updateUI();
   });
 }
+
 
 
 
