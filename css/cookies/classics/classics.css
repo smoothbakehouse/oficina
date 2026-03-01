@@ -306,6 +306,18 @@
   visibility: visible;
 }
 
+/* =========================================
+   FIX — Lightbox NÃO pode bloquear clique fechado
+   (mobile/webview bug clássico)
+========================================= */
+.lightbox{
+  pointer-events: none; /* 🔥 fechado = não pega toque */
+}
+
+.lightbox.active{
+  pointer-events: auto; /* aberto = pega toque normal */
+}
+
 /* ==================================================
    LIGHTBOX — SETAS (IGUAL CARROSSEL)
    ================================================== */
@@ -835,3 +847,4 @@
 .lightbox.active{
   pointer-events: auto;
 }
+
