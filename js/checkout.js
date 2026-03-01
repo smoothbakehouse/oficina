@@ -156,6 +156,7 @@ mobileBtn?.addEventListener('click', (e) => {
   scrollToCheckout();
 });
 
+});
 // ======================
 // ESTADO INICIAL FORÇADO (ANTI-BUG)
 // ======================
@@ -872,5 +873,6 @@ if (clearBtn) {
     updateUI();
   });
 }
+
 
 
