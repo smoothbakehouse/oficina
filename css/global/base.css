@@ -473,3 +473,29 @@ body.app-ready {
   transform:translateY(-1px);
   opacity:.95;
 }
+
+/* ==================================================
+   FIX OVERLAY — EVITA BLOQUEIO INVISÍVEL NO MOBILE
+   ================================================== */
+
+/* Splash: se por algum motivo não removeu ainda, não pode bloquear toque */
+#splash-screen{
+  pointer-events: none;
+}
+
+/* Lightbox: quando NÃO está ativo, não pode capturar clique */
+.lightbox{
+  pointer-events: none;
+}
+.lightbox.active{
+  pointer-events: auto;
+}
+
+/* Alert: quando NÃO está visível, não pode capturar clique */
+.smooth-alert{
+  pointer-events: none;
+}
+.smooth-alert.show{
+  pointer-events: auto;
+}
+
