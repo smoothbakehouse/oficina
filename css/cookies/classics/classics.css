@@ -286,6 +286,200 @@
 /* ==================================================
    11. LIGHTBOX
    ================================================== */
+/* ==================================================
+   11. LIGHTBOX
+   ================================================== */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  /*background: rgba(27, 12, 12, 0.75);*/
+  background: rgba(74, 46, 42, .75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease;
+  z-index: 9999;
+}
+
+.lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox{
+  pointer-events: none;
+}
+
+.lightbox.active{
+  pointer-events: auto;
+}
+
+/* ==================================================
+   LIGHTBOX — SETAS (IGUAL CARROSSEL)
+   ================================================== */
+
+.lightbox-nav{
+  position:absolute;
+  top:50%;
+  transform: translateY(-50%);
+
+  width:44px;
+  height:44px;
+
+  background: none !important;         /* sem fundo */
+  border: none !important;             /* sem borda */
+  box-shadow: none !important;         /* sem sombra */
+  border-radius: 0 !important;         /* sem elipse */
+
+  padding: 0 !important;
+  line-height: 1;
+  appearance: none;
+  -webkit-appearance: none;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:40px;
+  color: var(--brown) !important;
+
+  cursor:pointer;
+  opacity:.9;
+  transition: opacity .10s ease, transform .09s ease;
+
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.lightbox-prev{ left:10px; }
+.lightbox-next{ right:10px; }
+
+.lightbox-nav:hover{
+  opacity:1;
+  transform: translateY(-50%) scale(1.05);
+}
+
+/* PRESS FORTE (PULA/DESCE) — igual carrossel */
+.lightbox-nav:active{
+  transform: translateY(calc(-50% + 10px)) scale(.90);
+  opacity: 1;
+}
+
+/* press garantido via JS (.is-press) */
+.lightbox-nav.is-press{
+  transform: translateY(calc(-50% + 10px)) scale(.90) !important;
+  opacity: 1 !important;
+}
+
+/* teclado (TAB/ENTER) */
+.lightbox-nav:focus-visible{
+  outline: none;
+  transform: translateY(-50%) scale(1.05);
+  opacity: 1;
+}
+
+/* =========================
+   LIGHTBOX — DOTS (INSTAGRAM-LIKE)
+   ========================= */
+.lightbox-dots{
+  position: absolute;
+  left: 50%;
+  bottom: 20px;   /* controla altura */
+  transform: translateX(-50%);
+
+  display: flex;
+  gap: 6px;
+}
+
+/* bolinhas */
+.lightbox-dot{
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  background: #F7EFE6; /* Bege */
+  opacity: .95;
+  transition: transform .12s ease, opacity .12s ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* ativa */
+.lightbox-dot.is-active{
+  background: var(--brown); /* marrom */
+  transform: scale(1.25);
+  opacity: 1;
+}
+
+/* Mobile/touch: não deixa hover “grudar” */
+@media (hover: none){
+  .lightbox-nav:hover{
+    transform: translateY(-50%);
+    opacity: .9;
+  }
+}
+
+/* ==================================================
+   CONTAINER DA IMAGEM (REFERÊNCIA DO BOTÃO)
+   ================================================== */
+
+.lightbox-content{
+  position: relative;
+  display: inline-block;
+  transition: transform .28s ease;
+  will-change: transform;
+}
+
+/* IMAGEM */
+.lightbox img{
+  display:block;
+  max-width:90vw;
+  max-height:90vh;
+  border-radius:16px;
+  object-fit: contain;
+  background:#F7EFE6;
+
+  /* 🔥 transição no lightbox */
+  transition: transform .28s ease;
+}
+
+/* ==================================================
+   BOTÃO X SOBRE A IMAGEM
+   ================================================== */
+
+.lightbox-close{
+  position:absolute;
+  top:8px;
+  right:8px;
+
+  width:36px;
+  height:36px;
+
+  border-radius:50%;
+  border:none;
+
+  background: rgba(74, 46, 42, .55); /* Marrom Smooth com transparência */
+  color: #F7EFE6;              /* X Bege */
+
+  font-size:20px;
+  cursor:pointer;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  z-index:2;
+}
+
+.lightbox-close:hover{
+  background: rgba(74, 46, 42, .75);
+  transform: scale(1.05);
+}
 
 
 
@@ -653,5 +847,6 @@
 .lightbox.active{
   pointer-events: auto;
 }
+
 
 
