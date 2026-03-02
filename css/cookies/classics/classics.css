@@ -55,7 +55,8 @@
   max-width: 760px;
   margin-inline: auto;
 
-  background: #F7EFE6;
+  /*background: #F7EFE6;*/
+  background: greenyellow;
     /*border: 2px solid rgba(102,64,61,.10);*/
 
 
@@ -847,6 +848,7 @@
 .lightbox.active{
   pointer-events: auto;
 }
+
 
 
 
